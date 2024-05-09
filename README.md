@@ -1,5 +1,3 @@
-**README.md**
-
 # Projeto EZPass
 
 ![Java](https://img.shields.io/badge/Linguagem-Java-orange?logo=java)
