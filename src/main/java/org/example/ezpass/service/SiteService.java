@@ -13,7 +13,7 @@ public interface SiteService {
 
     SiteDto updateSite(Long siteId, SiteDto updatedSite);
 
-    void deleSite(Long siteId);
+    void deleteSite(Long siteId);
 
     SiteDto getSiteByID(Long siteId);
 

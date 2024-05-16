@@ -96,7 +96,7 @@ public class SiteServiceImpl implements SiteService {
 
     //Deleta um site cadastrado
     @Override
-    public void deleSite(Long siteId) {
+    public void deleteSite(Long siteId) {
         siteRepository.findById(siteId).orElseThrow(
                 () -> new ResourceNotFoundException("Site não existe com o id: " + siteId)
         );

@@ -43,7 +43,7 @@ public class SiteController {
     //REST API - DELETE
     @DeleteMapping("{id}")
     public ResponseEntity<String> deleteSite(@PathVariable("id")Long siteId) {
-        siteService.deleSite(siteId);
+        siteService.deleteSite(siteId);
         return ResponseEntity.ok("O site foi removido");
     }
 

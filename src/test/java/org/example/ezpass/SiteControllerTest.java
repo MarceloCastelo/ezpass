@@ -70,7 +70,7 @@ class SiteControllerTest {
         long siteId = 1L;
         ResponseEntity<String> responseEntity = siteController.deleteSite(siteId);
 
-        verify(siteService, times(1)).deleSite(siteId);
+        verify(siteService, times(1)).deleteSite(siteId);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals("O site foi removido", responseEntity.getBody());
     }
