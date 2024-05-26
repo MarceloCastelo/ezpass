@@ -11,10 +11,12 @@ public interface SiteService {
 
     List<SiteDto> getAllSites();
 
-    SiteDto updateSite(Long siteId, SiteDto updatedSite);
 
-    void deleteSite(Long siteId);
+    //Atualiza o site cadastrado
+    SiteDto updateSite(String siteName, SiteDto updatedSite);
 
-    SiteDto getSiteByID(Long siteId);
+    //Deleta um site cadastrado
+    void deleteSite(String siteName);
 
+    SiteDto getSiteByName(String siteName);
 }

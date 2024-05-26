@@ -11,8 +11,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SiteDto {
-    private Long id;
+    private String name;
     private String url;
-    private String login;
-    private String senha;
+    private String username;
+    private String password;
+    private String note;
 }

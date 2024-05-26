@@ -7,19 +7,21 @@ public class SiteMapper {
 
     public static SiteDto mapToSiteDto(Site site){
         return new SiteDto(
-                site.getId(),
+                site.getName(),
                 site.getUrl(),
-                site.getLogin(),
-                site.getSenha()
+                site.getUsername(),
+                site.getPassword(),
+                site.getNote()
         );
     }
 
     public static Site mapToSite(SiteDto sitedto){
         return new Site(
-                sitedto.getId(),
+                sitedto.getName(),
                 sitedto.getUrl(),
-                sitedto.getLogin(),
-                sitedto.getSenha()
+                sitedto.getUsername(),
+                sitedto.getPassword(),
+                sitedto.getNote()
         );
     }
 }

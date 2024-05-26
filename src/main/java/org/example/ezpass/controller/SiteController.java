@@ -4,6 +4,7 @@ package org.example.ezpass.controller;
 import lombok.AllArgsConstructor;
 import org.example.ezpass.dto.SiteDto;
 import org.example.ezpass.service.SiteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +13,10 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/api/sites")
 public class SiteController {
 
+    @Autowired
     private SiteService siteService;
 
     //REST API - POST (CREATE)
@@ -24,7 +25,6 @@ public class SiteController {
         SiteDto savedSite = siteService.createSite(siteDto);
         return new ResponseEntity<>(savedSite, HttpStatus.CREATED);
     }
-
     //REST API - GET ALL
     @GetMapping
     public ResponseEntity<List<SiteDto>> getAllSites() {
@@ -33,24 +33,26 @@ public class SiteController {
     }
 
     //REST API - UPDATE
-    @PutMapping("{id}")
-    public ResponseEntity<SiteDto> updateSite(@PathVariable("id") Long siteId,
+    @PutMapping("{name}")
+    public ResponseEntity<SiteDto> updateSite(@PathVariable("name") String siteName,
                                               @RequestBody SiteDto updatedSite) {
-        SiteDto siteDto = siteService.updateSite(siteId, updatedSite);
+        SiteDto siteDto = siteService.updateSite(siteName, updatedSite);
         return ResponseEntity.ok(siteDto);
     }
 
     //REST API - DELETE
-    @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteSite(@PathVariable("id")Long siteId) {
-        siteService.deleteSite(siteId);
+    @DeleteMapping("{name}")
+    public ResponseEntity<String> deleteSite(@PathVariable("name")String siteName) {
+        siteService.deleteSite(siteName);
         return ResponseEntity.ok("O site foi removido");
     }
 
     //REST API - GET BY ID
-    @GetMapping("{id}")
-    public ResponseEntity<SiteDto> getSiteById(@PathVariable("id") long siteId){
-        SiteDto siteDto = siteService.getSiteByID(siteId);
+    @GetMapping("{name}")
+    public ResponseEntity<SiteDto> getSiteById(@PathVariable("name") String siteName){
+        SiteDto siteDto = siteService.getSiteByName(siteName);
         return ResponseEntity.ok(siteDto);
     }
+
+
 }

@@ -16,16 +16,19 @@ import lombok.Setter;
 public class Site {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "url")
     private String url;
 
-    @Column(name = "login")
-    private String login;
+    @Column(name = "username")
+    private String username;
 
-    @Column(name = "senha")
-    private String senha;
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "note")
+    private String note;
 
 }
