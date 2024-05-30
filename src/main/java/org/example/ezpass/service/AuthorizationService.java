@@ -1,5 +1,6 @@
 package org.example.ezpass.service;
 
+import org.example.ezpass.entity.User;
 import org.example.ezpass.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,9 +12,14 @@ import org.springframework.stereotype.Service;
 public class AuthorizationService implements UserDetailsService {
 
     @Autowired
-    UserRepository repository;
+    private UserRepository repository;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return repository.findByLogin(username);
+        User user = (User) repository.findByLogin(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found with username: " + username);
+        }
+        return user;
     }
 }

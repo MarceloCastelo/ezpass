@@ -22,13 +22,15 @@ public class SecurityConfigurations {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        return  httpSecurity
+        return httpSecurity
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
+                        // Permissões de autenticação
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-
+                        .requestMatchers(HttpMethod.POST, "/auth/check-email").permitAll()
+                        // Permissões da aplicação
                         .requestMatchers(HttpMethod.POST, "/api/sites").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/sites").permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/api/sites/{name}").permitAll()
@@ -46,7 +48,7 @@ public class SecurityConfigurations {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }

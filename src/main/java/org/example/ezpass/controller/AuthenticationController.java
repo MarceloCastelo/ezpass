@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("auth")
 public class AuthenticationController {
@@ -47,5 +50,14 @@ public class AuthenticationController {
         this.repository.save(newUser);
 
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/check-email")
+    public ResponseEntity<Map<String, Boolean>> checkEmail(@RequestBody Map<String, String> request) {
+        String email = request.get("email");
+        boolean isAvailable = repository.findByLogin(email) == null;
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("available", isAvailable);
+        return ResponseEntity.ok(response);
     }
 }
