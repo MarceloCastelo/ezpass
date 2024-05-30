@@ -72,6 +72,4 @@ public class SiteServiceImpl implements SiteService {
         return SiteMapper.mapToSiteDto(site);
     }
 
-
-
 }
