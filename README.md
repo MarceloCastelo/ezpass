@@ -20,14 +20,11 @@
    git clone https://github.com/seu-usuario/ezpass.git
    ```
 
-2. Instale as bibliotecas:
-   ```
-   ./mvnw install
-   ```
+2. Instale as bibliotecas MAVEN
 
-3. Crie um banco de dados no PostgreSQL chamado `ezpassdb`.
+3. Crie um banco de dados no PostgreSQL chamado `database_ezpass`.
 
-4. No arquivo `src/main/resources/application.properties`, altere o `username` e `password` para o seu próprio do PostgreSQL.
+4. No arquivo `src/main/resources/application.properties`, altere o `username` e `password` para o seu próprio login do PostgreSQL.
 
 5. Após fazer essas alterações, o projeto deve funcionar.
 
